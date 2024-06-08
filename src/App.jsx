@@ -4,22 +4,24 @@ import ImageGallery from "./components/ImageGallery/ImageGallery";
 import Loader from "./components/Loader/Loader";
 import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 import SearchBar from "./components/SearchBar/SearchBar";
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster, toast} from "react-hot-toast";
+import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
+import ImageModal from "./components/ImageModal/ImageModal";
 
-function App() {
+const App = () =>{
   const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   const [query, setQuery] = useState("");
   const [page, setPage] = useState(1);
+  const [modalImage, setModalImage] = useState();
 
   useEffect(() => {
     const searchImages = async (query) => {
       try {
         setIsLoading(true);
-        setImages([]);
         const data = await searchImagesApi(query, page);
-        setImages(data);
+        setImages((prev) => [...prev, ...data]);
         console.log("data", data);
       } catch (error) {
         setError(true);
@@ -31,29 +33,38 @@ function App() {
     query && searchImages();
   }, [query, page]);
 
-  // const handleSearch = (newQuery) => {
-  //   setQuery(newQuery);
-  // }
-const handleSubmit = async(searchQuery)=>{
-setQuery(searchQuery)
-}
+  const handleSubmit = (newQuery) => {
+    setQuery(newQuery);
+    setImages([]);
+    setPage(1)
 
-  const handleLoadMore = async() => {
+  };
+
+  const handleLoadMore = () => {
     setPage(page + 1);
+  };
+
+  const handleImageClick = (image) => {
+    setModalImage(image)
   }
 
+  const handleCloseModal = () =>{
+    setModalImage(null)
+  }
 
   return (
     <>
+    <Toaster />
       <SearchBar onSubmit={handleSubmit} />
-      <Toaster />
-      {isLoading && <Loader />}
-      {error && <ErrorMessage />}
+      {error && <ErrorMessage message={error}/>}
+      <ImageGallery images={images} onImageClick={handleImageClick}/>
       {images.length > 0 && <ImageGallery images={images} />}
-      {/* <ImageGallery images={images} 
-  // onImageClick={handleImageClick} 
-  /> */}
-      {images.length > 0 && <button onClick={handleLoadMore}>Load more...</button>}
+      {images.length > 0 && (
+       <LoadMoreBtn onClick={handleLoadMore}/> 
+      )}
+      {isLoading && <Loader />}
+      {modalImage && <ImageModal image={modalImage} onClose={handleCloseModal} />}
+     
     </>
   );
 }

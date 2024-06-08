@@ -5,7 +5,7 @@ const BASE_URL = "https://api.unsplash.com/";
 
 export const searchImagesApi =  async (query, page) => {
     const {data} = await axios.get(`${BASE_URL}/photos`, {
-        params : {query, page, per_page:12},
+        params : {query, page, per_page:10},
         headers : {
              Authorization: `Client-ID ${ACCESS_KEY}`,
         }
