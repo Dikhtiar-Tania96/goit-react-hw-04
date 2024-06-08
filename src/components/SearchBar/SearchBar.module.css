@@ -1,6 +1,24 @@
-/* .styleInput{
+.styleInput{
     background-color: navy;
     width: 1200px;
     text-align: center;
-    justify-content: baseline;
-} */
+    display: block;
+}
+
+.input{
+    border-radius: 10px;
+    border: 2px solid black;
+    padding: 5px;
+    margin: 20px;   
+}
+
+.btnInput{
+    color: black;
+    border: 2px solid yellow;
+    cursor: pointer;
+}
+
+.btnInput:hover{
+    background-color: yellow;
+    border-color: black;
+}

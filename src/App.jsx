@@ -53,7 +53,7 @@ const App = () =>{
   }
 
   return (
-    <>
+    <div>
     <Toaster />
       <SearchBar onSubmit={handleSubmit} />
       {error && <ErrorMessage message={error}/>}
@@ -65,7 +65,7 @@ const App = () =>{
       {isLoading && <Loader />}
       {modalImage && <ImageModal image={modalImage} onClose={handleCloseModal} />}
      
-    </>
+    </div>
   );
 }
 

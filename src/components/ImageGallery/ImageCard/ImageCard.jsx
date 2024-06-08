@@ -5,8 +5,8 @@ const ImageCard = ({ image, onClick }) => {
           onClick={() => onClick(image)}
           src={image.urls.small}
           alt={image.alt_description}
-          width={200}
-          height={250}
+          width={400}
+          height= {300}
         />
       </div>
   );

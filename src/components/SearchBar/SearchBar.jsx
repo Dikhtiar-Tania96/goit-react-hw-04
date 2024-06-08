@@ -24,7 +24,7 @@ const handleChange =(e)=>{
     <>
       <header className={css.styleInput}>
         <form onSubmit={handleSubmit}>
-          <input
+          <input className={css.input}
             type="text"            
             value={input}
             autoComplete="off"
@@ -32,7 +32,7 @@ const handleChange =(e)=>{
             placeholder="Search images and photos"
             onChange={handleChange}
           />
-          <button type="submit">Search</button>
+          <button className={css.btnInput} type="submit">Search</button>
         </form>
       </header>
     </>
