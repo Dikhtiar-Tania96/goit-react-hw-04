@@ -1,20 +1,15 @@
-import { useEffect } from 'react'
-import './App.css'
-// import Loader from './components/Loader/Loader'
+import { useEffect } from "react";
+import { searchImageApi } from "./api";
 
 function App() {
-  useEffect(()=>{
-    const searchI = async () => {
-      const data = await searchImage()
-      console.log('data', data)
+  useEffect(() => {
+    const getArticles = async () => {
+      const data = await searchImageApi()
+      console.log("data", data)
     }
-    searchI()
-  })
-
-  return (
-    <>
-    </>
-  )
+    getArticles()
+  }, [])
+  return <></>
 }
 
 export default App
