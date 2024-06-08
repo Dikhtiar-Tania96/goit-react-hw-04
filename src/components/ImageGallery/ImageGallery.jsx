@@ -1,15 +1,16 @@
-// function ImageGallery() {
-//   return (
-//     <ul>
-// 	{}
-// 	<li>
-// 		<div>
-// 		  <img src="" alt="" />
-// 		</div>
-// 	</li>
-// </ul>
+import ImageCard from "./ImageCard/ImageCard"
 
-// )
-// }
 
-// export default ImageGallery
+const ImageGallery = ({images, onImageClick}) => {
+  return (
+    <ul>
+	{images.map(image => (
+        <li key={image.id}>
+            <ImageCard image={image} onClick={onImageClick}/>
+        </li>
+    ))}
+</ul>
+)
+}
+
+export default ImageGallery;

@@ -1,11 +1,15 @@
-function ImageCard() {
+const ImageCard = ({ image, onClick }) => {
   return (
     <>
       <div>
-        <img src="" alt="" />
+        <img
+          onClick={() => onClick(image)}
+          src={image.urls.small}
+          alt={image.alt_description}
+        />
       </div>
     </>
   );
-}
+};
 
 export default ImageCard;

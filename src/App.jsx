@@ -1,15 +1,28 @@
-import { useEffect } from "react";
-import { searchImageApi } from "./api";
+import { useEffect, useState } from "react";
+import { searchImagesApi } from "./api";
+import ImageGallery from "./components/ImageGallery/ImageGallery";
 
 function App() {
+  const [images, setImages] = useState([]);
+
   useEffect(() => {
-    const getArticles = async () => {
-      const data = await searchImageApi()
-      console.log("data", data)
-    }
-    getArticles()
-  }, [])
-  return <></>
+    const searchImages = async () => {
+      const data = await searchImagesApi();
+      console.log("data", data);
+      setImages(data);
+    };
+    searchImages();
+  }, []);
+
+// const handleImageClick=(image)=>{
+// }
+
+  return <> 
+  <ImageGallery images={images} 
+  // onImageClick={handleImageClick} 
+  />
+
+  </>;
 }
 
-export default App
+export default App;

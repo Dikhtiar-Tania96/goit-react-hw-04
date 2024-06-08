@@ -1,7 +1,7 @@
 import axios from "axios";
 
-export const searchImageApi =  async () => {
-    const data = await axios.get('https://api.unsplash.com/photos/?client_id=nTmfZBh3fHC-1xCDDBilQhBg_4ZKGGHwqFThAoBaxDc')
+export const searchImagesApi =  async () => {
+    const {data} = await axios.get('https://api.unsplash.com/photos/?client_id=nTmfZBh3fHC-1xCDDBilQhBg_4ZKGGHwqFThAoBaxDc')
     return data
 }
 // const ACCESS_KEY = "nTmfZBh3fHC-1xCDDBilQhBg_4ZKGGHwqFThAoBaxDc";
