@@ -1,6 +1,5 @@
 const ImageCard = ({ image, onClick }) => {
   return (
-    <>
       <div>
         <img
           onClick={() => onClick(image)}
@@ -10,7 +9,6 @@ const ImageCard = ({ image, onClick }) => {
           height={250}
         />
       </div>
-    </>
   );
 };
 

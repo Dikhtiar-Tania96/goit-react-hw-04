@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {toast} from 'react-hot-toast'
+import css from './SearchBar.module.css'
 
 const SearchBar = ({onSubmit}) => {
   const [input, setInput] = useState("");
@@ -21,7 +22,7 @@ const handleChange =(e)=>{
 
   return (
     <>
-      <header>
+      <header className={css.styleInput}>
         <form onSubmit={handleSubmit}>
           <input
             type="text"            

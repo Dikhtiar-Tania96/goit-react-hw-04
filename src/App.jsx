@@ -17,7 +17,7 @@ const App = () =>{
   const [modalImage, setModalImage] = useState();
 
   useEffect(() => {
-    const searchImages = async (query) => {
+    const searchImages = async () => {
       try {
         setIsLoading(true);
         const data = await searchImagesApi(query, page);
