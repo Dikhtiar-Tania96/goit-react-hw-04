@@ -57,12 +57,11 @@ const App = () =>{
     <Toaster />
       <SearchBar onSubmit={handleSubmit} />
       {error && <ErrorMessage message={error}/>}
+      {isLoading && <Loader />}
       <ImageGallery images={images} onImageClick={handleImageClick}/>
-      {images.length > 0 && <ImageGallery images={images} />}
       {images.length > 0 && (
        <LoadMoreBtn onClick={handleLoadMore}/> 
       )}
-      {isLoading && <Loader />}
       {modalImage && <ImageModal image={modalImage} onClose={handleCloseModal} />}
      
     </div>
